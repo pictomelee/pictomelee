@@ -4,10 +4,6 @@ from flask import url_for
 
 app = Flask(__name__)
 
-# set up static link to index.html's CSS file
-
-url_for('static', filename='CSS.css')
-
 @app.route('/index')
 
 def index():
