@@ -1,11 +1,12 @@
 # super simple test of flask
 
 from flask import Flask
+from flask import render_template
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-	return app.send_static_file('index.html')
+	return render_template('index.html')
 #def hello_world():
 #	return 'Hello World!'
 
