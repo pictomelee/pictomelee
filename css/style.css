@@ -1,0 +1,17 @@
+h1 {
+	color: blue;
+}
+
+body {
+	background: gray;
+}
+
+li.nav{
+	list-style: none;
+	display: inline;
+	padding-right: 30px;
+}
+
+ul{
+	padding-left: 0;
+}
