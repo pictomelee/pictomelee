@@ -8,23 +8,22 @@
 	</head>
 
 	<body>
-		<h1>Welcome to Pictorious!</h1>
+		<h1>welcome to pictorious</h1>
 		<center><img src="https://media.giphy.com/media/iPTTjEt19igne/giphy.gif" alt="Main Picture" width="350" height="300">
-		<h2 id='time'><h2>
+				<center>
+		<h2>it's a game where you travel a path of gifs until you find a gif that matches a special word</h2></center>
 		
-			<textarea rows="4" cols="50">
-To start you can either add in your very own gif down below, or we can choose one for you!
-			</textarea>
+			<p>
+give a gif link to start with or leave the box blank and we'll choose one for you!
+			</p>
 			
 			<br>
 			
-			<textarea rows="1" cols="50">
-Add in your URL here.
-			</textarea>	
-			
-			<br>
-			
-			<button type="button">Let's Go!</button></center>
+			<form id="gifInput" action="/index" method="POST">
+				<input type = "text" placeholder="gif links go here" style="font-size: 24pt"> <br>
+				<input type = "submit" value = "let's pic!" style="font-size: 42pt">
+			</form>
+		</center>
 	</body>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
