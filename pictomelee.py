@@ -8,8 +8,6 @@ time_taken = 500
 gif_chain = 'a b c'
 
 
-
-
 @app.route('/passLink', methods=['POST'])
 def passLink():
 	num = int(request.form['number'])
@@ -50,8 +48,6 @@ def my_form_post():
 @app.route('/')
 def start():
 	return render_template('start.html')
-
-
 
 if __name__ == '__main__':
 	app.run(debug=True, host='0.0.0.0')
