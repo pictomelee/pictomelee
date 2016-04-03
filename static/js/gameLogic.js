@@ -44,7 +44,7 @@ function picClick(index){
 	
 	
 	$.ajax({
-            url: '/passLink	',
+            url: $STATIC_ROOT + '/passLink',
             data: "data=" + mainImage.src,
             type: 'POST',
             success: function(response) {
