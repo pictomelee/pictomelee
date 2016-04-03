@@ -19,7 +19,6 @@ def printimage():
     return;
 
 def imgpress():
-    
    from ClarifaiApi import Image
    img = Image.open('picture.jpg')
    img.show()
