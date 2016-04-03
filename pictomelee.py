@@ -11,9 +11,7 @@ app = Flask(__name__)
 def passLink():
 	num = int(request.form['number'])
 	url = request.form['data']
-
-	# hard-coded goal value --> needs to be made dynamic but this does work
-	goal = "ice"
+	goal = request.form['goal']
 
 	if checkPictory.checkGifTags(url,goal) == True :
 		return jsonify(data="won")
@@ -31,11 +29,14 @@ def passLink():
 
 		return ""
 
-
-
-@app.route('/index')
-def index():
+@app.route('/start', methods=['GET'])
+def my_form_post():
 	return render_template('index.html')
+
+
+@app.route('/')
+def index():
+	return render_template('StartIndex.html')
 
 
 if __name__ == '__main__':

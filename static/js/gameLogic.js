@@ -7,7 +7,13 @@ var startTime = 0;
 var isStarted = false;
 var timer;
 var seenUrls = [];
+var goal;
+var startUrl;
 $(document).ready(function(){
+
+	goal = getParameterByName('goal');
+	startUrl = getParameterByName('url');
+	
     $("#1").click(function(){
         picClick(1);
     });
@@ -20,31 +26,15 @@ $(document).ready(function(){
     $("#4").click(function(){
         picClick(4);
     });
-    $(function(){
-  		$('img').each(function(e){
-   		 var src = $(e).attr('src');
-   		 $(e).hover(function(){
-    		  $(this).attr('src', src.replace('.gif', '_anim.gif'));
-    		}, function(){
-    		  $(this).attr('src', src);
-   	 });
-  });
-});
 
-    init();
-});
-
-function init(){
-	for(var i = 0; i < 4; i++){
+    for(var i = 0; i < 4; i++){
 		imageSlots[i] = document.getElementById((i+1).toString());
 	}
-	var index = Math.floor(Math.random() * catLength);
 	mainImage = document.getElementById('main');
-	mainImage.src = cats[index];
+	mainImage.src = startUrl;
 	seenUrls.push(mainImage.src);
-	getGifs(mainImage.src)
-	
-}
+	getGifs(mainImage.src);
+});
 
 function picClick(index){
 	if (!isStarted){
@@ -71,7 +61,7 @@ function tick(){
 function getGifs(url){
 	$.ajax({
 		url: $STATIC_ROOT + '/passLink',
-		data: "data=" + url + "&number=4",
+		data: "data=" + url + "&number=4&goal=" + goal,
 		type: 'POST',
 		success: function(response) {
 			if (response["data"] == "won") {
@@ -99,7 +89,7 @@ function getGif(url, index){
 	alert(index);
 	$.ajax({
 		url: $STATIC_ROOT + '/passLink',
-		data: "data=" + url + "&number=1",
+		data: "data=" + url + "&number=1&goal=" + goal,
 		type: 'POST',
 		success: function(response) {
 			gif = response["data"];
@@ -117,4 +107,14 @@ function getGif(url, index){
 			return;
 		}
 	});
+}
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)", "i"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
