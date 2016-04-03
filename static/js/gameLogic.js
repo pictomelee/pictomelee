@@ -20,6 +20,17 @@ $(document).ready(function(){
     $("#4").click(function(){
         picClick(4);
     });
+    $(function(){
+  		$('img').each(function(e){
+   		 var src = $(e).attr('src');
+   		 $(e).hover(function(){
+    		  $(this).attr('src', src.replace('.gif', '_anim.gif'));
+    		}, function(){
+    		  $(this).attr('src', src);
+   	 });
+  });
+});
+
     init();
 });
 
@@ -78,7 +89,6 @@ function getGifs(url){
 		}
 	});
 }
-
 function getGif(url, index){
 	alert(index);
 	$.ajax({
