@@ -11,13 +11,17 @@
 		<h1>Welcome to Pictomelee!</h1>
 	</body>
 		<p>
-			<center><img src="Images/Drumpf.jpg" alt="Main Picture" width="350" height="300" align="center"></center>
+			<center><img id="main" src="Images/Drumpf.jpg" alt="Main Picture" width="350" height="300" align="center"></center>
 			<br>
 			<br>
-			<center><img src="Images/Corn.jpg" alt="Picture1" width="250" height="200"> 
-			<img src="Images/Gopher.jpg" alt="Picture2" width="250" height="200">
-			<img src="Images/GuineaPig.jpg" alt="Picture3" width="250" height="200">
-			<img src="Images/Mars.jpg" alt="Picture4" width="250" height="200"></center>
-		</p>
+			<center>
+			<img id="1" src="Images/Corn.jpg" id="1" alt="Picture1" width="250" height="200" frameBorder="0"></iframe>
+			<img id="2" src="Images/Gopher.jpg" alt="Picture2" width="250" height="200" frameBorder="0"></iframe>
+			<img id="3" src="Images/GuineaPig.jpg" alt="Picture3" width="250" height="200" frameBorder="0" ></iframe>
+			<img id="4" src="Images/Mars.jpg" alt="Picture4" width="250" height="200" frameBorder="0"  ></iframe></center>
 
+		</p>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<script src="{{ url_for('static', filename='js/gameLogic.js') }}"></script>
 </html>

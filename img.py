@@ -3,10 +3,10 @@
 import pycurl
 from StringIO import StringIO
 
-keyword = "cakepops"
+keyword = raw_input("Enter search")
 buffer = StringIO()
 c = pycurl.Curl()
-c.setopt(c.URL, 'http://api.giphy.com/v1/gifs/search?q='+ keyword +'&api_key=dc6zaTOxFJmzC')
+c.setopt(c.URL, 'http://api.giphy.com/v1/gifs/search?q='+ keyword +'&api_key=dc6zaTOxFJmzC&limit=1')
 c.setopt(c.WRITEDATA, buffer)
 c.perform()
 c.close()
