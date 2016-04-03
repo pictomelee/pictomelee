@@ -1,16 +1,39 @@
 var images = []; //The list of images the user clicks, in order.
-var cats = ["http://giphy.com/gifs/cat-funny-QgcQLZa6glP2w","http://giphy.com/gifs/baseballhittingdrills-cat-funny-kitten-l4KhYXYuv0HH0AExy","http://giphy.com/gifs/dillonfrancis-dillion-francis-r6uEVfPTT7PYk","http://giphy.com/gifs/trolli-cat-lol-gif-lolz-2xDY8blbVyc3S","http://giphy.com/gifs/cat-funny-wDs4w9nojvmG4","http://giphy.com/gifs/cat-halloween-funny-evAe2zNwDqamA","http://giphy.com/gifs/cat-kitten-halloween-LImE2WbJViyGI","http://giphy.com/gifs/funny-gif-cat-animals-zunNjgGVFOi9G","http://giphy.com/gifs/cat-funny-gif-hl8EB6j2kjDWM","http://giphy.com/gifs/funny-gif-cat-animals-oBlBIWmmuhdzW","http://giphy.com/gifs/funny-gif-cat-animals-EvPbiBl3efxzW","http://giphy.com/gifs/funny-gif-cat-animals-N74Z9WOMdnKvK","http://giphy.com/gifs/cat-funny-animal-JJ3k9jY2mi0ZG","http://giphy.com/gifs/cat-animated-dog-pWbSd03oTAbnO","http://giphy.com/gifs/cat-gif-black-bT1bfX2D0VIJi","http://giphy.com/gifs/cat-funny-ivelTBasMg67S","http://giphy.com/gifs/cat-gif-lamula-3AkIiqu7vfriw","http://giphy.com/gifs/cat-funny-gif-7qD1odpQnVfR6","http://giphy.com/gifs/cat-funny-gatinho-wJb1Ie0huUCyI","http://giphy.com/gifs/cat-funny-gif-5KN6UqeDnyF1u","http://giphy.com/gifs/funny-gif-2lCx5z6e652De","http://giphy.com/gifs/cat-funny-gif-5XblzuJO9uKje","http://giphy.com/gifs/cat-kitty-bored-1UiLoPw0e0opO","http://giphy.com/gifs/coffee-cat-gif-funny-dWhp7Do60N8vC","http://giphy.com/gifs/funny-cat-gif-scared-fish-4XnL30fhVarrG"];
+var cats = ["https://media.giphy.com/media/QgcQLZa6glP2w/giphy.gif","https://media.giphy.com/media/l4KhYXYuv0HH0AExy/giphy.gif","https://media.giphy.com/media/r6uEVfPTT7PYk/giphy.gif","https://media.giphy.com/media/2xDY8blbVyc3S/giphy.gif","https://media.giphy.com/media/wDs4w9nojvmG4/giphy.gif","https://media.giphy.com/media/evAe2zNwDqamA/giphy.gif","https://media.giphy.com/media/LImE2WbJViyGI/giphy.gif","https://media.giphy.com/media/zunNjgGVFOi9G/giphy.gif","https://media.giphy.com/media/hl8EB6j2kjDWM/giphy.gif","https://media.giphy.com/media/oBlBIWmmuhdzW/giphy.gif","https://media.giphy.com/media/EvPbiBl3efxzW/giphy.gif","https://media.giphy.com/media/N74Z9WOMdnKvK/giphy.gif","https://media.giphy.com/media/JJ3k9jY2mi0ZG/giphy.gif","https://media.giphy.com/media/pWbSd03oTAbnO/giphy.gif","https://media.giphy.com/media/bT1bfX2D0VIJi/giphy.gif","https://media.giphy.com/media/ivelTBasMg67S/giphy.gif","https://media.giphy.com/media/3AkIiqu7vfriw/giphy.gif","https://media.giphy.com/media/7qD1odpQnVfR6/giphy.gif","https://media.giphy.com/media/wJb1Ie0huUCyI/giphy.gif","https://media.giphy.com/media/5KN6UqeDnyF1u/giphy.gif","https://media.giphy.com/media/2lCx5z6e652De/giphy.gif","https://media.giphy.com/media/5XblzuJO9uKje/giphy.gif","https://media.giphy.com/media/1UiLoPw0e0opO/giphy.gif","https://media.giphy.com/media/dWhp7Do60N8vC/giphy.gif","https://media.giphy.com/media/4XnL30fhVarrG/giphy.gif"];
 var catLength=25;
 var mainImage;
 var imageSlots = [];
-init();
 
-	
+$(document).ready(function(){
+    $("#1").click(function(){
+        picClick(1);
+    });
+    $("#2").click(function(){
+        picClick(2);
+    });
+    $("#3").click(function(){
+        picClick(3);
+    });
+    $("#4").click(function(){
+        picClick(4);
+    });
+    init();
+});
+
 function init(){
-	for(var i = 1; i < 5; i++){
-		imageSlots[i] = document.getElementById(toString(i));
-		var index = Math.floor((Math.random() * catLength);
+	for(var i = 0; i < 4; i++){
+		imageSlots[i] = document.getElementById((i+1).toString());
+		var index = Math.floor(Math.random() * catLength);
 		imageSlots[i].src = cats[index];
 	}
-	
+		var index = Math.floor(Math.random() * catLength);
+		mainImage = document.getElementById('main');
+		mainImage.src = cats[index];
+}
+function picClick(index){
+	mainImage.src=imageSlots[index-1].src;
+	for(var i = 0; i < 4; i++){
+		var index = Math.floor(Math.random() * catLength);
+		imageSlots[i].src = cats[index];
+	}
 }
