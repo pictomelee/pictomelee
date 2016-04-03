@@ -1,4 +1,5 @@
 import tag
+import checkPictory
 import tagToGifs
 import json
 from flask import Flask, render_template, url_for, request, jsonify
@@ -10,15 +11,25 @@ app = Flask(__name__)
 def passLink():
 	num = int(request.form['number'])
 	url = request.form['data']
-	tags= tag.getTags(url)
 
-	if num == 1:
-		gif = tagToGifs.getGifs(tags, 3, 1)
-		return jsonify(data=gif)
-	else:
-		gifs = tagToGifs.getGifs(tags, 3, 4)
-		return jsonify(data=" ".join(gifs))
-	return ""
+	# hard-coded goal value --> needs to be made dynamic but this does work
+	goal = "ice"
+
+	if checkPictory.checkGifTags(url,goal) == True :
+		return jsonify(data="won")
+	else :
+		# continue the game
+
+		tags= tag.getTags(url)
+
+		if num == 1:
+			gif = tagToGifs.getGifs(tags, 3, 1)
+			return jsonify(data=gif)
+		else:
+			gifs = tagToGifs.getGifs(tags, 3, 4)
+			return jsonify(data=" ".join(gifs))
+
+		return ""
 
 
 
