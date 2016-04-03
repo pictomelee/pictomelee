@@ -30,10 +30,29 @@ function init(){
 		mainImage = document.getElementById('main');
 		mainImage.src = cats[index];
 }
+
 function picClick(index){
-	mainImage.src=imageSlots[index-1].src;
-	for(var i = 0; i < 4; i++){
-		var index = Math.floor(Math.random() * catLength);
-		imageSlots[i].src = cats[index];
-	}
+
+
+	var newIndex = "#" + index.toString();
+	var urlToSend = $(newIndex).attr('src');
+	alert(urlToSend);
+
+	$.ajax({
+		url: $SCRIPT_ROOT + "/passLink",
+		type: "POST",
+		data: JSON.stringify({"gifUrl": urlToSend.toString() }),
+		contentType: "application/json; charset=utf-8",
+		// success: function(response) {
+		// 	console.log(response);
+		// },
+		// error: function(error) {
+		// 	console.log(error);
+		// }
+	});
 }
+
+
+
+
+
