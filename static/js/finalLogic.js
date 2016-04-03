@@ -4,11 +4,11 @@ $(document).ready(function(){
 	tElement = document.getElementById('tFinal');
 	gElement = document.getElementById('gFinal');
 	var millis = $TIME;
-	tElement.innerHTML=(millis / 1000).toFixed(2);
+	tElement.innerHTML=(millis / 1000).toFixed(2) + " seconds;
 	//gElement.innerHTML=$CHAIN;
 	
 	var urls = $CHAIN.split(',');
-	for (var i = 0; i < urls.length - 1; i++){
+	for (var i = 0; i < urls.length; i++){
 		var newImg = document.createElement("img");
 		var d  = document.createElement("div");
 		newImg.src = urls[i];
