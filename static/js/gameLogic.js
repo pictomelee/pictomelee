@@ -21,7 +21,6 @@ $(document).ready(function(){
 		gifChain.push(startUrl);
 	}
 	
-	
     $("#1").click(function(){
         gifChain.push($("#1").attr('src'));
         picClick(1);
@@ -41,6 +40,7 @@ $(document).ready(function(){
 
     for(var i = 0; i < 4; i++){
 		imageSlots[i] = document.getElementById((i+1).toString());
+		imageSlots[i].src = 'static/q' + (i+1) + '.jpg';
 	}
 	mainImage = document.getElementById('main');
 	mainImage.src = startUrl;
@@ -51,17 +51,19 @@ $(document).ready(function(){
 });
 
 function picClick(index){
+	if(gifChain.length == 5) win();
 	if (!isStarted){
 		isStarted = true;
 		var d = new Date();
 		startTime = d.getTime();
 		timer = setInterval(function(){ tick(); }, 100);
 	}
-	mainImage.src=imageSlots[index-1].src;
 	
+	mainImage.src=imageSlots[index-1].src;
 	for(var i = 0; i < 4; i++){
 		imageSlots[i].src = 'static/q' + (i+1) + '.jpg';
 	}
+	
 	getGifs(mainImage.src);
 }
 
@@ -96,7 +98,7 @@ function getGifs(url){
 
 		},
 		error: function(error) {
-			alert("There was an error connecting to the server.");
+			getGifs(url);
 		}
 	});
 }
