@@ -4,12 +4,12 @@
 	<head>
 		<title>Pictorious</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<link rel="stylesheet" type="text/css" href="CSS/CSS.css">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS.css') }}">
 	</head>
 
 	<body>
 		<h1>Welcome to Pictorious!</h1>
-		<center><img src="Images/JimmyFallon.gif" alt="Main Picture" width="350" height="300">
+		<center><img src="https://media.giphy.com/media/iPTTjEt19igne/giphy.gif" alt="Main Picture" width="350" height="300">
 		<h2 id='time'><h2>
 		
 			<textarea rows="4" cols="50">
@@ -33,7 +33,6 @@ Add in your URL here.
 			$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 		</script>
 		
-		<script src="{{ url_for('static', filename='js/gameLogic.js') }}"></script>
 	
 
 </html>

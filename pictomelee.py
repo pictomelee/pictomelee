@@ -7,6 +7,9 @@ from flask import Flask, render_template, url_for, request, jsonify
 app = Flask(__name__)
 
 
+
+
+
 @app.route('/passLink', methods=['POST'])
 def passLink():
 	num = int(request.form['number'])
@@ -32,6 +35,9 @@ def passLink():
 		return ""
 
 
+@app.route('/')
+def start():
+	return render_template('start.html')
 
 @app.route('/index')
 def index():
