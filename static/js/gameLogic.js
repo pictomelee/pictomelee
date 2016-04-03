@@ -86,7 +86,6 @@ function getGifs(url){
 	});
 }
 function getGif(url, index){
-	alert(index);
 	$.ajax({
 		url: $STATIC_ROOT + '/passLink',
 		data: "data=" + url + "&number=1&goal=" + goal,
