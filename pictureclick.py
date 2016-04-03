@@ -1,4 +1,4 @@
-"When clicked, will print something, after will print out three images"
+# When clicked, will print something, after will print out three images
 
 import sys
 from clarifai.client import ClarifaiApi
