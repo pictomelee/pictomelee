@@ -8,7 +8,7 @@ $(document).ready(function(){
 	//gElement.innerHTML=$CHAIN;
 	
 	var urls = $CHAIN.split(',');
-	for (var i = 0; i < urls.length; i++){
+	for (var i = 0; i < urls.length - 1; i++){
 		var newImg = document.createElement("img");
 		var d  = document.createElement("div");
 		newImg.src = urls[i];
