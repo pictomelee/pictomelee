@@ -38,9 +38,9 @@ def win():
 	global gif_chain
 
 	time_taken = request.form['time']
-	print "time taken" + time_taken
+	# print "time taken" + time_taken
 	gif_chain = request.form['urls']
-	print "check out the gif_chain " + gif_chain
+	# print "check out the gif_chain " + gif_chain
 
 	return jsonify(redirect='/indexFinal')
 

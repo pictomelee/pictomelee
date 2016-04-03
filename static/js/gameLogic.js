@@ -46,7 +46,8 @@ $(document).ready(function(){
 	mainImage.src = startUrl;
 	seenUrls.push(mainImage.src);
 	getGifs(mainImage.src);
-	win();
+	// for debugging of win() method
+	//win();
 });
 
 function picClick(index){
