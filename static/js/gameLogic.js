@@ -6,7 +6,7 @@ var imageSlots = [];
 var startTime = 0;
 var isStarted = false;
 var timer;
-
+var seenUrls = [];
 $(document).ready(function(){
     $("#1").click(function(){
         picClick(1);
@@ -26,37 +26,28 @@ $(document).ready(function(){
 function init(){
 	for(var i = 0; i < 4; i++){
 		imageSlots[i] = document.getElementById((i+1).toString());
-		var index = Math.floor(Math.random() * catLength);
-		imageSlots[i].src = cats[index];
 	}
-		var index = Math.floor(Math.random() * catLength);
-		mainImage = document.getElementById('main');
-		mainImage.src = cats[index];
+	var index = Math.floor(Math.random() * catLength);
+	mainImage = document.getElementById('main');
+	mainImage.src = cats[index];
+	seenUrls.push(mainImage.src);
+	getGifs(mainImage.src)
+	
 }
 
 function picClick(index){
 	if (!isStarted){
+		isStarted = true;
 		var d = new Date();
 		startTime = d.getTime();
 		timer = setInterval(function(){ tick(); }, 100);
 	}
 	mainImage.src=imageSlots[index-1].src;
 	
-	
-	$.ajax({
-            url: $STATIC_ROOT + '/passLink',
-            data: "data=" + mainImage.src,
-            type: 'POST',
-            success: function(response) {
-            	var gifs = response.split(" ");
-            	for(var i = 0; i < 4; i++){
-					imageSlots[i].src = gifs[i];
-				}
-            },
-            error: function(error) {
-                alert("There was an error connecting to the server.");
-            }
-        });
+	for(var i = 0; i < 4; i++){
+		imageSlots[i].src = 'static/q' + (i+1) + '.jpg';
+	}
+	getGifs(mainImage.src);
 }
 
 function tick(){
@@ -64,4 +55,50 @@ function tick(){
 	var millis = d-startTime;
 	var s = (millis / 1000).toFixed(2);
 	document.getElementById('time').innerHTML=s;
+}
+
+function getGifs(url){
+	$.ajax({
+		url: $STATIC_ROOT + '/passLink',
+		data: "data=" + url + "&number=4",
+		type: 'POST',
+		success: function(response) {
+			var gifs = response["data"].split(" ");
+			for(var i = 0; i < 4; i++){
+				if(seenUrls.indexOf(gifs[i]) == -1 && gifs[i] != ''){
+					imageSlots[i].src = gifs[i];
+					seenUrls.push(imageSlots[i].src);
+				}else{
+					getGif(url, i);
+				}
+			}
+		},
+		error: function(error) {
+			alert("There was an error connecting to the server.");
+		}
+	});
+}
+
+function getGif(url, index){
+	alert(index);
+	$.ajax({
+		url: $STATIC_ROOT + '/passLink',
+		data: "data=" + url + "&number=1",
+		type: 'POST',
+		success: function(response) {
+			gif = response["data"];
+			if(seenUrls.indexOf(gif) == -1 && gif != ''){
+				imageSlots[index].src = gif;
+				seenUrls.push(imageSlots[index].src);
+			}else{
+				getGif(url, index);
+				return;
+			}
+			
+		},
+		error: function(error) {
+			getGif(url, index);
+			return;
+		}
+	});
 }

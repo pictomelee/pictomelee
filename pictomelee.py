@@ -8,10 +8,18 @@ app = Flask(__name__)
 
 @app.route('/passLink', methods=['POST'])
 def passLink():
+	num = int(request.form['number'])
 	url = request.form['data']
 	tags= tag.getTags(url)
-	gifs = tagToGifs.getGifs(tags, 2, 4)
-	return " ".join(gifs)
+
+	if num == 1:
+		gif = tagToGifs.getGifs(tags, 3, 1)
+		return jsonify(data=gif)
+	else:
+		gifs = tagToGifs.getGifs(tags, 3, 4)
+		return jsonify(data=" ".join(gifs))
+	return ""
+
 
 
 @app.route('/index')
