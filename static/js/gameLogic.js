@@ -3,6 +3,9 @@ var cats = ["https://media.giphy.com/media/QgcQLZa6glP2w/giphy.gif","https://med
 var catLength=25;
 var mainImage;
 var imageSlots = [];
+var startTime = 0;
+var isStarted = false;
+var timer;
 
 $(document).ready(function(){
     $("#1").click(function(){
@@ -31,9 +34,33 @@ function init(){
 		mainImage.src = cats[index];
 }
 function picClick(index){
-	mainImage.src=imageSlots[index-1].src;
-	for(var i = 0; i < 4; i++){
-		var index = Math.floor(Math.random() * catLength);
-		imageSlots[i].src = cats[index];
+	if (!isStarted){
+		var d = new Date();
+		startTime = d.getTime();
+		timer = setInterval(function(){ tick(); }, 100);
 	}
+	mainImage.src=imageSlots[index-1].src;
+	
+	
+	$.ajax({
+            url: '/sendData',
+            data: "data=" + mainImage.src,
+            type: 'POST',
+            success: function(response) {
+            	var gifs = response.split(" ");
+            	for(var i = 0; i < 4; i++){
+					imageSlots[i].src = gifs[i];
+				}
+            },
+            error: function(error) {
+                alert(error);
+            }
+        });
+}
+
+function tick(){
+	var d = new Date();
+	var millis = d-startTime;
+	var s = (millis / 1000).toFixed(2);
+	document.getElementById('time').innerHTML=s;
 }

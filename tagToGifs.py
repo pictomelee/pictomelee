@@ -48,6 +48,3 @@ def getStringFromKeyword(keyword):
 	#only want 1 result so look for that
 	#revise so the user only searches for what they want.                                     
 	#nxt task is to clean up the URL so it only shows one
-
-tags = ['dog', 'ice cream', 'car', 'house', 'feel', 'angry', 'love', 'shoes', 'bear']
-print(getGifs(tags, 3, 5))
