@@ -54,7 +54,7 @@ function picClick(index){
 				}
             },
             error: function(error) {
-                alert(error);
+                alert("There was an error connecting to the server.");
             }
         });
 }
