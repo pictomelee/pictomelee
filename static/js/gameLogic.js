@@ -13,7 +13,7 @@ $(document).ready(function(){
 	if(goal == '' || goal.indexOf(' ') != -1){
 		goal = 'cat';
 	}
-	
+	document.getElementById('goal').innerHTML="You are looking for: " + goal;
 	startUrl = getParameterByName('url');
 	if(startUrl == ''){
 		startUrl = 'https://media.giphy.com/media/iPTTjEt19igne/giphy.gif';
