@@ -11,14 +11,24 @@
 		<h1>Welcome to Pictomelee!</h1>
 	</body>
 		<p>
-			<center><img id="main" src="Images/Drumpf.jpg" alt="Main Picture" width="350" height="300" align="center"></center>
+			<center><img id="main" src="" alt="Main Picture" width="350" height="300" align="center"></center>
 			<br>
 			<br>
-			<center><img id="2" src="Images/Corn.jpg" alt="Picture1" width="250" height="200"> 
-			<img id="2"src="Images/Gopher.jpg" alt="Picture2" width="250" height="200">
-			<img id="3" src="Images/GuineaPig.jpg" alt="Picture3" width="250" height="200">
-			<img id="4" src="Images/Mars.jpg" alt="Picture4" width="250" height="200"></center>
+			<center><img id="2" src="" alt="Picture1" width="250" height="200"> 
+			<img id="2"src="" alt="Picture2" width="250" height="200">
+			<img id="3" src="" alt="Picture3" width="250" height="200">
+			<img id="4" src="" alt="Picture4" width="250" height="200"></center>
+
+			<img id="test" src="" alt="TestPicture" width="250" height="200">
 
 		</p>
 	<script src="{{ url_for('static', filename='js/gameLogic.js') }}"></script>
+	
+
+	<script>
+		// basic idea for passing in data from the server
+		var gifUrl = '{{ urls|safe }}';
+		var testPic = document.getElementById("test");
+		testPic.src = gifUrl;
+	</script>
 </html>
