@@ -4,7 +4,7 @@ $(document).ready(function(){
 	tElement = document.getElementById('tFinal');
 	gElement = document.getElementById('gFinal');
 	var millis = $TIME;
-	tElement.innerHTML=(millis / 1000).toFixed(2) + " seconds;
+	tElement.innerHTML=(millis / 1000).toFixed(2) + " seconds";
 	//gElement.innerHTML=$CHAIN;
 	
 	var urls = $CHAIN.split(',');
