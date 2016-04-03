@@ -74,15 +74,21 @@ function getGifs(url){
 		data: "data=" + url + "&number=4",
 		type: 'POST',
 		success: function(response) {
-			var gifs = response["data"].split(" ");
-			for(var i = 0; i < 4; i++){
-				if(seenUrls.indexOf(gifs[i]) == -1 && gifs[i] != ''){
-					imageSlots[i].src = gifs[i];
-					seenUrls.push(imageSlots[i].src);
-				}else{
-					getGif(url, i);
+			if (response["data"] == "won") {
+				alert("You win!");
+			} else {
+				var gifs = response["data"].split(" ");
+				for(var i = 0; i < 4; i++){
+					if(seenUrls.indexOf(gifs[i]) == -1 && gifs[i] != ''){
+						imageSlots[i].src = gifs[i];
+						seenUrls.push(imageSlots[i].src);
+					}else{
+						getGif(url, i);
+					}
 				}
+
 			}
+
 		},
 		error: function(error) {
 			alert("There was an error connecting to the server.");
