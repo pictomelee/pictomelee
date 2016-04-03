@@ -33,6 +33,7 @@ function init(){
 		mainImage = document.getElementById('main');
 		mainImage.src = cats[index];
 }
+
 function picClick(index){
 	if (!isStarted){
 		var d = new Date();
@@ -43,7 +44,7 @@ function picClick(index){
 	
 	
 	$.ajax({
-            url: '/sendData',
+            url: '/passLink	',
             data: "data=" + mainImage.src,
             type: 'POST',
             success: function(response) {
