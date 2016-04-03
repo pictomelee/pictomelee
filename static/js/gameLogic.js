@@ -8,6 +8,7 @@ var seenUrls = [];
 var goal;
 var startUrl;
 var gifChain = [];
+
 $(document).ready(function(){
 	goal = getParameterByName('goal');
 	if(goal == '' || goal.indexOf(' ') != -1){
@@ -17,19 +18,24 @@ $(document).ready(function(){
 	startUrl = getParameterByName('url');
 	if(startUrl == ''){
 		startUrl = 'https://media.giphy.com/media/iPTTjEt19igne/giphy.gif';
+		gifChain.push(startUrl);
 	}
 	
 	
     $("#1").click(function(){
+        gifChain.push($("#1").attr('src'));
         picClick(1);
     });
     $("#2").click(function(){
+    	gifChain.push($("#2").attr('src'));
         picClick(2);
     });
     $("#3").click(function(){
+    	gifChain.push($("#3").attr('src'));
         picClick(3);
     });
     $("#4").click(function(){
+    	gifChain.push($("#4").attr('src'));
         picClick(4);
     });
 
@@ -40,7 +46,8 @@ $(document).ready(function(){
 	mainImage.src = startUrl;
 	seenUrls.push(mainImage.src);
 	getGifs(mainImage.src);
-	win();
+	// for debugging of win() method
+	//win();
 });
 
 function picClick(index){
@@ -124,7 +131,7 @@ function win(){
 	var millis = d-startTime;
 	$.ajax({
 		url: $STATIC_ROOT + '/win',
-		data: 'time=' + millis + '&urls=' + "one two three",
+		data: 'time=' + millis + '&urls=' + gifChain,
 		//data: 'time=' + s + '&urls=' + gifChain.join(' '),
 		type: 'POST',
 		success: function(response) {
