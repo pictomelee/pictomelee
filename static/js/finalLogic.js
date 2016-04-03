@@ -5,6 +5,6 @@ $(document).ready(function(){
 	gElement = document.getElementById('gFinal');
 	
 	tElement.innerHTML=$TIME;
-	tElement.innerHTML=$CHAIN;
+	gElement.innerHTML=$CHAIN;
 	
 });

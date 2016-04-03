@@ -4,8 +4,10 @@ import tagToGifs
 import json
 from flask import Flask, render_template, url_for, request, jsonify
 app = Flask(__name__)
-time_taken = 500
-gif_chain = 'a b c'
+
+
+time_taken = 0
+gif_chain = []
 
 
 @app.route('/passLink', methods=['POST'])
@@ -32,8 +34,14 @@ def passLink():
 		
 @app.route('/win', methods=['POST'])
 def win():
+	global time_taken 
+	global gif_chain
+
 	time_taken = request.form['time']
+	print "time taken" + time_taken
 	gif_chain = request.form['urls']
+	print "check out the gif_chain " + gif_chain
+
 	return jsonify(redirect='/indexFinal')
 
 @app.route('/indexFinal')

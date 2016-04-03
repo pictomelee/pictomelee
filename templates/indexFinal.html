@@ -9,7 +9,7 @@
 
 	<body>
 		<center><h1>Congratulations! <br> You are PICTORIOUS!</h1>
-		<img src="{{ url_for('static', filename='win.jpg') }}" alt="Main Picture" width="550" height="300">
+		<img src="" alt="Main Picture" width="550" height="300">
 		<h2 id='time'><h2>
 		<h1>Your results:</h1></center>
 		<p>
@@ -25,8 +25,8 @@
 
 		<script type=text/javascript>
 			$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
-			$TIME = {{time}};
-			$CHAIN = {{chain}};
+			$TIME = {{time|safe}};
+			$CHAIN = "{{chain|safe}}";
 		</script>
 		
 		<script src="{{ url_for('static', filename='js/finalLogic.js') }}"></script>
