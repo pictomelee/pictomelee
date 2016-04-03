@@ -4,20 +4,20 @@
 	<head>
 		<title>Pictorious</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<link rel="stylesheet" type="text/css" href="CSS/CSS.css">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS.css') }}">
 	</head>
 
 	<body>
 		<center><h1>Congratulations! <br> You are PICTORIOUS!</h1>
-		<img src="Images/WinningPhoto.gif" alt="Main Picture" width="550" height="300">
+		<img src="{{ url_for('static', filename='win.jpg') }}" alt="Main Picture" width="550" height="300">
 		<h2 id='time'><h2>
 		<h1>Your results:</h1></center>
 		<p>
-			Time Taken:
+			Time Taken: <span id='tFinal'></span>
 			<br>
 			<br>
 			<br>
-			Pictures Used:
+			Pictures Used: <span id='gFinal'></span>
 		</p>
 	</body>
 
@@ -25,9 +25,11 @@
 
 		<script type=text/javascript>
 			$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+			$TIME = {{time}};
+			$CHAIN = {{chain}};
 		</script>
 		
-		<script src="{{ url_for('static', filename='js/gameLogic.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/finalLogic.js') }}"></script>
 	
 
 </html>
