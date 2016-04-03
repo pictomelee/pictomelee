@@ -51,7 +51,7 @@ $(document).ready(function(){
 });
 
 function picClick(index){
-	if(gifChain.length == 5) win();
+	//if(gifChain.length == 5) win();
 	if (!isStarted){
 		isStarted = true;
 		var d = new Date();
