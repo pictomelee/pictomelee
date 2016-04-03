@@ -8,25 +8,28 @@
 	</head>
 
 	<body>
-		<h1>Welcome to Pictorious!</h1>
+		<h1>welcome to pictorious</h1>
 		<center><img src="https://media.giphy.com/media/iPTTjEt19igne/giphy.gif" alt="Main Picture" width="350" height="300">
-		<h2 id='time'><h2>
+				<center>
+		<h2>it's a game where you travel a path of gifs until you find a gif that matches a special word</h2></center>
 		
-			<p>
-To start you can either add in your very own gif down below, as well as a destination keyword.
-			<p>
+
+		<p>
+to start you can either add in your very own gif down below, as well as a destination keyword.
+		</p>
+
 			
 			<br>
-			<form action="/start" method="GET">
-				<input type=text rows="1" cols="50" name='url'>
-				Put the URL of a gif or image here. It's your starting point, so choose wisely.
-				</input>	
+			<form id="gifInput" action="/start" method="GET">	
 			
-				<input type=text rows="1" cols="50" name='goal'>
-				Type a single word you're trying to reach.
+				<input type = "text" name='url' placeholder="gif/image links go here" style="font-size: 22pt"> 
+				<br>
+	
+				<input type="text" rows="1" cols="50" placeholder="and the word goes here" name='goal' style="font-size: 22pt"><br>
 				</input>
-				<input type="submit" name="my-form" value="Let's go!">
+				<input type="submit" name="my-form" value="let's pic!">
 			</form>
+		</center>
 			<br>
 			
 	</body>
