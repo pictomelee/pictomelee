@@ -10,13 +10,13 @@ app = Flask(__name__)
 def passLink():
 	url = request.form['data']
 	tags= tag.getTags(url)
-	gifs = tagToGifs.getGifs(tags, 3, 4)
+	gifs = tagToGifs.getGifs(tags, 2, 4)
 	return " ".join(gifs)
 
 
 @app.route('/index')
 def index():
-	return render_template('index.html',urls='https://media.giphy.com/media/iPTTjEt19igne/giphy.gif')
+	return render_template('index.html')
 
 app.debug = True
 
