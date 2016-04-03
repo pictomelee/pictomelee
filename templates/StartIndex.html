@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Pictorious</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" type="text/css" href="CSS/CSS.css">
+	</head>
+
+	<body>
+		<h1>Welcome to Pictorious!</h1>
+		<center><img src="Images/JimmyFallon.gif" alt="Main Picture" width="350" height="300">
+		<h2 id='time'><h2>
+		
+			<textarea rows="4" cols="50">
+To start you can either add in your very own gif down below, or we can choose one for you!
+			</textarea>
+			
+			<br>
+			
+			<textarea rows="1" cols="50">
+Add in your URL here.
+			</textarea>	
+			
+			<br>
+			
+			<button type="button">Let's Go!</button></center>
+	</body>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+		<script type=text/javascript>
+			$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+		</script>
+		
+		<script src="{{ url_for('static', filename='js/gameLogic.js') }}"></script>
+	
+
+</html>
