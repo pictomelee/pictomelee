@@ -13,17 +13,25 @@
 				<center>
 		<h2>it's a game where you travel a path of gifs until you find a gif that matches a special word</h2></center>
 		
-			<p>
-give a gif link to start with or leave the box blank and we'll choose one for you!
-			</p>
+
+		<p>
+to start you can either add in your very own gif down below, as well as a destination keyword.
+		</p>
+
 			
 			<br>
+			<form id="gifInput" action="/start" method="GET">	
 			
-			<form id="gifInput" action="/index" method="POST">
-				<input type = "text" placeholder="gif links go here" style="font-size: 24pt"> <br>
-				<input type = "submit" value = "let's pic!" style="font-size: 42pt">
+				<input type = "text" name='url' placeholder="gif/image links go here" style="font-size: 22pt"> 
+				<br>
+	
+				<input type="text" rows="1" cols="50" placeholder="and the word goes here" name='goal' style="font-size: 22pt"><br>
+				</input>
+				<input type="submit" name="my-form" value="let's pic!">
 			</form>
 		</center>
+			<br>
+			
 	</body>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -31,7 +39,5 @@ give a gif link to start with or leave the box blank and we'll choose one for yo
 		<script type=text/javascript>
 			$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 		</script>
-		
-	
 
 </html>
