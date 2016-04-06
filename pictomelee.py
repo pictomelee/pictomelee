@@ -12,16 +12,22 @@ gif_chain = []
 
 @app.route('/passLink', methods=['POST'])
 def passLink():
-	num = int(request.form['number'])
-	url = request.form['data']
-	goal = request.form['goal']
+	
+	if ('checkVictory' in request.form) :
+		url = request.form['data']
+		goal = request.form['goal']
 
-	if checkPictory.checkGifTags(url,goal) == True :
-		return jsonify(data="won")
+		if checkPictory.checkGifTags(url,goal) == True :
+			return jsonify(data="won")
 	else :
-		# continue the game
+		# this is not a POST for checking if the person won
+		# get a new batch of GIFs
 
-		tags= tag.getTags(url)
+		num = int(request.form['number'])
+		url = request.form['data']
+		goal = request.form['goal']
+
+		tags = tag.getTags(url)
 
 		if num == 1:
 			gif = tagToGifs.getGifs(tags, 3, 1)
